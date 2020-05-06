@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="toolbar">
+    <div>
+      Go: {{currentPlay}}
+    </div>
+    <div>
+      <div *ngIf="isGameOver">!!!Game Over. Winner: {{winner | uppercase}}!!!</div>
+    </div>
+    <div>
+      <button type="button" (click)="newGame()">New game</button>
+    </div>
+  </div>
+  <div class="game-board">
+    <div
+            *ngFor="let row of fields; let y = index"
+            class="row"
+    >
+      <div
+              *ngFor="let cell of row; let x = index"
+              class="cell"
+              [style.width.px]="cellSize"
+              [style.height.px]="cellSize"
+              [style.backgroundColor]="cell"
+              [class.active]="isPossibleMove(x, y)"
+              (click)="moveTo(x, y)"
+      ></div>
+    </div>
+    <div
+            *ngFor="let checker of checkers"
+            class="checker"
+            [ngStyle]="checkerStyle(checker)"
+            (mousedown)="selectChecker(checker)"
+            [class.selected]="checker === selectedChecker"
+            [class.avangard]="isInAvangard(checker)"
+    >
+      <div *ngIf="checker.isKing" class="crown"></div>
+    </div>
+  </div>
+</div>

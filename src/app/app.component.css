@@ -1,0 +1,89 @@
+.container {
+    margin: 0 auto;
+    max-width: 640px;
+    width: 100%;
+    border: 1px solid #000;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-board {
+    position: relative;
+    display: inline-flex;
+    flex-flow: column nowrap;
+    border: 1px solid #000;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.cell {
+    transition: .3s;
+}
+
+.cell.active {
+    background: #42a60e !important;
+}
+
+.checker {
+    transition: .3s;
+}
+
+.checker, .checker:before, .checker:after {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 100%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    position: absolute;
+}
+
+.checker:before, .checker:after {
+    content: '';
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .3;
+    border-color: inherit;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+}
+
+.checker:before {
+    width: 80%;
+    height: 80%;
+}
+
+.checker:after {
+    width: 30%;
+    height: 30%;
+}
+
+.selected {
+    outline: blue;
+    box-shadow: 0 0 3px 3px #42a60e;
+}
+
+.avangard.checker:after {
+    background-color: #42a60e;
+}
+
+.crown {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background: url(/assets/images/crown.png) center no-repeat;
+    background-size: contain;
+}
+
+.toolbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 0 20px;
+}
